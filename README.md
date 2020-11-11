@@ -1,2 +1,1 @@
-# form-factors
-Foldables and Multi-Screen Explainer
+# Form Factors Explained
