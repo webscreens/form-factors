@@ -47,8 +47,8 @@ A <dfn data-export="">foldable device</dfn> is a top-level concept that encompas
 
 A [=foldable device=] has a mechanism that allows the device to fold open and closed similarly to traditional laptops. To differentiate from the traditional laptop form factor, a foldable device has a screen on both sides of the fold. In the most typical configuration, a foldable device can fold a one bigger screen into two smaller screens. A foldable device can have one or more physical internal screens made of solid materials (e.g. glass) or foldable materials (e.g. organic compound). Screens made of solid materials employ a physical hinge between the screens that creates a physical gap between the screens, while the screens made of flexible materials can bend without forming a physical gap between the logical regions divided by the fold. The physical hinges can rotate from ~0 degree to at most 360 degrees, but the range of movement may be limited depending on the device’s hardware characteristics. Screens made of flexible material can also bend within certain limits and to differentiate from the designs with a physical hinge, they do not have a physical gap between the logical regions divided by the fold. The number of logical regions the screen may fold into is not limited and the physical size of the device screen and its aspect ratio is not restricted. This translates into a wide spectrum of possible form factors and designs. Given this diversity, great care should be taken when exposing these capabilities to web developers to ensure a future-proof and extensible design.
 
-<img src="images/horizontal-fold.svg" height="150px" alt="">
-<img src="images/vertical-fold.svg" height="150px" alt="">
+<img src="images/horizontal-fold.svg" height="150px" alt="Horizontal fold">
+<img src="images/vertical-fold.svg" height="150px" alt="Vertical fold">
 
 *<br>An illustration of two [=foldable-screen device=] concepts in two different [=postures=]. ([Source](https://w3c.github.io/screen-fold/))*
 
@@ -107,13 +107,13 @@ A <dfn>posture</dfn> is defined as the primary way in which the [=foldable devic
 ![](images/postures.png)
 *<br>Example postures from left to right: “closed”, “laptop”, “table top”, “flat”, “canvas”, and “book”. ([Source](TODO))*
 
-### Spanning
-
-<dfn>Spanning</dfn> is a concept that allows apps or websites to run side by side on a [=dual-screen device=]. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience.
-
 ### Window segments
 
 A <dfn>window segment</dfn> represents the regions (and their dimensions) of the window that reside on separate (adjacent) [=displays=].
+
+### Spanning
+
+<dfn>Spanning</dfn> is a concept that allows apps or websites to run side by side on a [=dual-screen device=], spanning web content across [=window segments=]. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience.
 
 ### Window interface
 
@@ -122,7 +122,7 @@ The [=Window interface=] represents a window containing a DOM document, with its
 ### Viewport
 
 <div class="issue">
-Ensure [Visual Viewport API](#visual-viewport-api) defines the two conceptual viewports, colloquially known as the [=visual viewport=] and [=layout viewport=], in a manner compatible with the [related web specifications](#related-web-specifications).
+[Visual Viewport API](#visual-viewport-api) defines the two conceptual viewports, colloquially known as the [=visual viewport=] and [=layout viewport=]. This API may need changes to be compatible with the [related web specifications](#related-web-specifications).
 </div>
 
 ### Fold
@@ -135,7 +135,7 @@ A <dfn>CSS pixel</dfn> is denoted in CSS with the suffix px. It is a unit of len
 
 One CSS pixel doesn’t necessarily correspond to one physical screen pixel, since that would make everything very small on high resolution screens. Instead one such CSS pixel might correspond to for example 2x2 square of physical pixels - or even non-discrete values given a subpixel (red, green, and blue) layout.
 
-Many OS’s allow to change the scaling of all UI elements which often is reflected in the “device pixel ratio” that makes up one CSS pixel. A browser also often allows the user to apply a scale on top of the OS-provided scale on a per site basis. The layout is laid out considering the browser viewport in CSS pixels. For example, given a browser scale of 125%, a 800px wide viewport becomes a 640px wide viewport.
+Many OS’s allow to change the scaling of all UI elements which often is reflected in the [device pixel ratio](https://drafts.csswg.org/cssom-view/#dom-window-devicepixelratio) that makes up one CSS pixel. A browser also often allows the user to apply a scale on top of the OS-provided scale on a per site basis. The layout is laid out considering the browser viewport in CSS pixels. For example, given a browser scale of 125%, a 800px wide viewport becomes a 640px wide viewport.
 
 ### Layout zoom
 
@@ -354,7 +354,7 @@ The [Second Screen Community Group](https://www.w3.org/community/webscreens/) is
 Zouhir Chahoud,
 Kenneth Rohde Christiansen,
 Victor Costan,
-Francois Daoust,
+François Daoust,
 Diego González,
 Anssi Kostiainen,
 Daniel Libby,
