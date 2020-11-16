@@ -66,7 +66,13 @@ A <dfn data-export="">foldable-screen device</dfn> has one or multiple screens m
 
 ### Multi-monitor setups
 
-A <dfn data-export="">multi-monitor setup</dfn> is a traditional mainstream setup in which a device (foldable or not) has one or more monitors connected to it (wired or not). Major desktop operating systems provide affordances to the user to arrange the logical position of the monitors as seen by the OS to match the physical location of the monitors as selected by the user. In this configuration, it is typical to mix and match monitors of different physical sizes in both landscape and horizontal configurations to optimize the screen estate for the usage model. Power users may also make use of advanced software tools to create virtual zones to which application windows can snap into (see e.g. [Microsoft PowerToys FancyZones](https://github.com/microsoft/PowerToys/wiki/FancyZones-Overview)). The virtual zones provide a similar abstraction to the [=window segments=].
+A <dfn data-export="">multi-monitor setup</dfn> (sometimes referred to as an <dfn data-export="">extended-screen device</dfn>) is any device with one or more physical [=displays=] connected to expand the default visual workspace. This includes traditional desktop, [=traditional laptop=], and mobile devices, with additional [=displays=] connected beyond the single [=screen=] typical of these [=form factors=]. Additional displays are often [=monitors=], televisions, or projectors connected by a wire, but also includes other display form factors and connection technologies.
+
+Major desktop operating systems allow users to customize the logical arrangement of multiple screens, including their relative arrangement and other attributes. The arrangement may or may not reflect the placement and dimensions of underlying physical hardware. In this configuration, it is typical to mix and match monitors of different physical sizes and resolutions, in both landscape and portrait configurations, to optimize the screen space for the usage model. This free-form composition of screens is distinct from the nature of [=dual-screen devices=], which have well-defined relationships between physical displays, and from [=foldable-screen devices=], which expands the operational modes of a single physical display.
+
+<div class="note">
+Power users may also make use of advanced software tools to create virtual zones to which application windows can snap into (see e.g. Microsoft PowerToys FancyZones). The virtual zones provide a similar abstraction to the [=window segments=].
+</div>
 
 ### Monitor
 
@@ -90,7 +96,11 @@ A <dfn>single foldable display</dfn> (SFD) refers to a [=foldable-screen device=
 
 ### Posture
 
-A <dfn>posture</dfn> is defined as the primary way in which the [=foldable device=] is positioned and presented to the user. Because [=foldable devices=] have a hinge they can present different [=postures=] depending on the hinge angle, device orientation, and the way on how the device is being held by the user. Example postures include “book”, “flat”, “laptop”, and “tent”. The list of postures is expected to evolve over time, and not all foldable devices are able to support all possible postures.
+A <dfn>posture</dfn> is defined as the primary way in which the [=foldable device=] is positioned and presented to the user. Because [=foldable devices=] have a hinge they can present different [=postures=] depending on the hinge angle, device orientation, and the way on how the device is being held by the user. Example postures include 'book', 'flat', 'laptop', and 'tent'. The list of postures is expected to evolve over time, and not all foldable devices are able to support all possible postures.
+
+<div class="issue">
+We've discussed the need to rethink the names of the postures to make them as abstract as possible. The fact that 'laptop' is both an actual device and a 'posture' mode can be confusing and misleading. Can a laptop have another posture that's not laptop? Does a mobile device get into laptop posture? Similar case with tablet as a device type and posture.
+</div>
 
 ### Window segments
 
@@ -98,7 +108,11 @@ A <dfn>window segment</dfn> represents the regions (and their dimensions) of the
 
 ### Spanning
 
-<dfn>Spanning</dfn> is a concept that allows apps or websites to run side by side on a [=dual-screen device=], spanning web content across [=window segments=]. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience.
+<dfn>Spanning</dfn> is a window mode on a [=dual-screen device=], where a single application or web content window is spread across both [=screens=] of the device. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience.
+
+<div class="note">
+A device can be a [=foldable device=] and have a [=multi-monitor setup=]. These [=form factors=] are not mutually exclusive and depend on the hardware present on the device and its use across software.
+</div>
 
 ### Window interface
 
