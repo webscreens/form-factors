@@ -25,7 +25,7 @@
 <section id="abstract">
 ## Abstract
 
-This explainer discusses new device [=form factors=] that are emerging and related terminology that is being established. This document proposes one naming scheme to be able to reason about and use these terms and concepts consistently in [related web specifications](#related-web-specifications). The use of these terms in other contexts may differ.
+This Form Factors Explained document discusses new device [=form factors=] referred to as [=foldable devices=] that are emerging and related terminology that is being established. This explainer also discusses [=multi-monitor setups=] that extend the [=overall visual workspace=] of a device. This document proposes one naming scheme to be able to reason about and use these terms and concepts consistently in [related web specifications](#related-web-specifications). The use of these terms in other contexts may differ.
 </section>
 
 <!-- How to edit this file: https://respec.org/docs/ -->
@@ -45,16 +45,17 @@ A <dfn data-export="">foldable device</dfn> is a top-level concept that encompas
 
 *<br>A concept of a [=foldable-screen device=] on the left and a concept of a [=dual-screen device=] on the right. ([Source](https://w3c.github.io/screen-fold/))*
 
-A [=foldable device=] has a mechanism that allows the device to fold open and closed similarly to traditional laptops. To differentiate from the traditional laptop form factor, a foldable device has a screen on both sides of the fold. In the most typical configuration, a foldable device can fold a one bigger screen into two smaller screens. A foldable device can have one or more physical internal screens made of solid materials (e.g. glass) or foldable materials (e.g. organic compound). Screens made of solid materials employ a visible physical hinge between the screens that creates a physical gap between the screens, while the screens made of flexible materials employ a physical hinge underneath the screen and as such can bend without forming a physical gap between the logical regions divided by the fold. The physical hinges can rotate from ~0 degree to at most 360 degrees, but the range of movement may be limited depending on the device’s hardware characteristics. Screens made of flexible material can bend within certain limits and to differentiate from the designs with the screens made of solid materials, they do not have a physical gap between the logical regions divided by the fold. The number of logical regions the screen may fold into is not limited and the physical size of the device screen and its aspect ratio is not restricted. This translates into a wide spectrum of possible form factors and designs. Given this diversity, great care should be taken when exposing these capabilities to web developers to ensure a future-proof and extensible design.
+A [=foldable device=] has a mechanism that allows the device to fold open and closed similarly to [=traditional laptops=]. To differentiate from the traditional laptop form factor, a foldable device has a screen on both sides of the fold. In the most typical configuration, a foldable device can fold a one bigger screen into two smaller screens. A foldable device can have one or more physical internal screens made of solid materials (e.g. glass) or foldable materials (e.g. organic compound). Screens made of solid materials employ a visible physical hinge between the screens that creates a physical gap between the screens, while the screens made of flexible materials employ a physical hinge underneath the screen and as such can bend without forming a physical gap between the logical regions divided by the fold. The physical hinges can rotate from ~0 degree to at most 360 degrees, but the range of movement may be limited depending on the device’s hardware characteristics. Screens made of flexible material can bend within certain limits and to differentiate from the designs with the screens made of solid materials, they do not have a physical gap between the logical regions divided by the fold. The number of logical regions the screen may fold into is not limited and the physical size of the device screen and its aspect ratio is not restricted. This translates into a wide spectrum of possible form factors and designs. Given this diversity, great care should be taken when exposing these capabilities to web developers to ensure a future-proof and extensible design.
 
 <img src="images/horizontal-fold.svg" height="150px" alt="Horizontal fold">
 <img src="images/vertical-fold.svg" height="150px" alt="Vertical fold">
 
 *<br>An illustration of two [=foldable-screen device=] concepts in two different [=postures=]. ([Source](https://w3c.github.io/screen-fold/))*
 
-<aside class="note">
-Traditional single-screen laptop form factor is excluded from the foldable device definition and web specifications that refer to this form factor specifically refer to it as a <dfn>traditional laptop</dfn>. Wikipedia has a more nuanced definition of laptop types, but for the purpose of [related web specifications](#related-web-specifications) [all laptop types](https://en.wikipedia.org/wiki/Laptop#Types) are considered traditional laptops.
-</aside>
+<div class="note">
+<!-- ReSpec needs an empty line here to trigger its Markdown parsing mode -->
+[=Traditional single-screen device=] form factor is excluded from the [=foldable device=] definition. One instance of a [=traditional single-screen device=] is a <dfn>traditional laptop</dfn>, and web specifications that refer to this form factor specifically refer to it as a [=traditional laptop=]. Wikipedia has a more nuanced definition of laptop types, but for the purpose of [related web specifications](#related-web-specifications) [all laptop types](https://en.wikipedia.org/wiki/Laptop#Types) are considered [=traditional laptops=].
+</div>
 
 ### Dual-screen device
 
@@ -72,6 +73,12 @@ Major desktop operating systems allow users to customize the logical arrangement
 
 <div class="note">
 Power users may also make use of advanced software tools to create virtual zones to which application windows can snap into (see e.g. Microsoft PowerToys FancyZones). The virtual zones provide a similar abstraction to the [=window segments=].
+</div>
+
+### Traditional single-screen device
+
+<div class="issue">
+  <dfn>Traditional single-screen device</dfn> to be defined.
 </div>
 
 ### Monitor
