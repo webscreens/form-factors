@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Form Factors Explained</title>
+  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <script class="remove">
+   // All config options at https://respec.org/docs/ 
+   var respecConfig = {
+      subtitle: "Foldable devices and multi-monitor setups",
+      specStatus: "unofficial",
+      editors: [
+        { name: "Second Screen Community Group", url: "https://www.w3.org/community/webscreens/" },
+      ],
+      github: "webscreens/form-factors",
+      shortName: "form-factors",
+      xref: "web-platform",
+      group: "webscreens",
+      format: "markdown"
+    };
+  </script>
+  <style>
+    body { background-repeat: no-repeat !important; }
+  </style>
+</head>
+<body>
+
+<section id="abstract">
+## Abstract
+
+This Form Factors Explained document discusses new device [=form factors=] referred to as [=foldable devices=] that are emerging and related terminology that is being established. This explainer also discusses [=multi-monitor setups=] that extend the [=overall visual workspace=] of a device. This document proposes one naming scheme to be able to reason about and use these terms and concepts consistently in [related web specifications](#related-web-specifications). The use of these terms in other contexts may differ.
+</section>
+
+<!-- How to edit this file: https://respec.org/docs/ -->
+
+## Terminology and conceptual model
+
+><dfn data-export="">Form factor</dfn> is a hardware design aspect that defines and prescribes the size, shape, and other physical specifications of components, particularly in electronics. A form factor may represent a broad class of similarly sized components, or it may prescribe a specific standard. It may also define an entire system, as in a computer form factor. ([Wikipedia](https://en.wikipedia.org/wiki/Form_factor_(design)))
+
+![](images/relationship.svg)
+*<br>Relationship of form factor-related terminology in this explainer.*
+
+<div class="note">
+A device can be a [=foldable device=] and have a [=multi-monitor setup=]. These [=form factors=] are not mutually exclusive and depend on the hardware present on the device and its use across software.
+</div>
+
+### Foldable device
+
+A <dfn data-export="">foldable device</dfn> is a top-level concept that encompasses both a [=dual-screen device=] and a [=foldable-screen device=] [=form factors=].
+
+<img src="images/form-factors.svg" height="150px" alt="">
+
+*<br>A concept of a [=foldable-screen device=] on the left and a concept of a [=dual-screen device=] on the right. ([Source](https://w3c.github.io/screen-fold/))*
+
+A [=foldable device=] has a mechanism that allows the device to fold open and closed similarly to [=traditional laptops=]. To differentiate from the traditional laptop form factor, a foldable device has a screen on both sides of the fold. In the most typical configuration, a foldable device can fold a one bigger screen into two smaller screens. A foldable device can have one or more physical internal screens made of solid materials (e.g. glass) or foldable materials (e.g. organic compound). Screens made of solid materials employ a visible physical hinge between the screens that creates a physical gap between the screens, while the screens made of flexible materials employ a physical hinge underneath the screen and as such can bend without forming a physical gap between the logical regions divided by the fold. The physical hinges can rotate from ~0 degree to at most 360 degrees, but the range of movement may be limited depending on the device’s hardware characteristics. Screens made of flexible material can bend within certain limits and to differentiate from the designs with the screens made of solid materials, they do not have a physical gap between the logical regions divided by the fold. The number of logical regions the screen may fold into is not limited and the physical size of the device screen and its aspect ratio is not restricted. This translates into a wide spectrum of possible form factors and designs. Given this diversity, great care should be taken when exposing these capabilities to web developers to ensure a future-proof and extensible design.
+
+<img src="images/horizontal-fold.svg" height="150px" alt="Horizontal fold">
+<img src="images/vertical-fold.svg" height="150px" alt="Vertical fold">
+
+*<br>An illustration of two [=foldable-screen device=] concepts in two different [=postures=]. ([Source](https://w3c.github.io/screen-fold/))*
+
+<div class="note">
+<!-- ReSpec needs an empty line here to trigger its Markdown parsing mode -->
+[=Traditional single-screen device=] form factor is excluded from the [=foldable device=] definition. One instance of a [=traditional single-screen device=] is a <dfn>traditional laptop</dfn>, and web specifications that refer to this form factor specifically refer to it as a [=traditional laptop=]. Wikipedia has a more nuanced definition of laptop types, but for the purpose of [related web specifications](#related-web-specifications) [all laptop types](https://en.wikipedia.org/wiki/Laptop#Types) are considered [=traditional laptops=].
+</div>
+
+### Dual-screen device
+
+A <dfn data-export="">dual-screen device</dfn> has two or more physical internal screens made of solid materials placed together to form a larger foldable virtual screen. A [=dual-screen device=] is an instance of a <dfn data-export="">multi-screen device</dfn> with two screens. A defining characteristic of the [=dual-screen device=] form factor is a physical hinge that can rotate from 0 degree to at most 360 degrees that forms a physical gap in between the screens. The range of the hinge movement as well as the width of the gap varies depending on the hardware design. The screens separated by the physical hinge are made of solid materials, typically glass, and as such are not flexible. This design requires web developers to work around the fact there is a physical gap between the screens on both sides of the fold.
+
+### Foldable-screen device
+
+A <dfn data-export="">foldable-screen device</dfn> has one or multiple screens made of foldable material that can bend so that the each screen can fold onto itself. The hinge can typically rotate from 0 degree to 180 degrees depending on the flexible screen materials’ capability of sustaining the bend radius. The material around the area of the screen that can bend is often softer than on the other parts of the screen. To differentiate from a [=dual-screen device=], a [=foldable-screen device=] does not have a physical gap between the logical regions formed when folding the screen. This makes it easier for existing web content to be presented without visual distractions when the [=foldable-screen device=] is folded open into so-called flat posture.
+
+### Multi-monitor setups
+
+A <dfn data-export="">multi-monitor setup</dfn> (sometimes referred to as an <dfn data-export="">extended-screen device</dfn>) is any device with one or more physical [=displays=] connected to expand the default visual workspace. This includes traditional desktop, [=traditional laptop=], and mobile devices, with additional [=displays=] connected beyond the single [=screen=] typical of these [=form factors=]. Additional displays are often [=monitors=], televisions, or projectors connected by a wire, but also includes other display form factors and connection technologies.
+
+Major desktop operating systems allow users to customize the logical arrangement of multiple screens, including their relative arrangement and other attributes. The arrangement may or may not reflect the placement and dimensions of underlying physical hardware. In this configuration, it is typical to mix and match monitors of different physical sizes and resolutions, in both landscape and portrait configurations, to optimize the screen space for the usage model. This free-form composition of screens is distinct from the nature of [=dual-screen devices=], which have well-defined relationships between physical displays, and from [=foldable-screen devices=], which expands the operational modes of a single physical display.
+
+<div class="note">
+Power users may also make use of advanced software tools to create virtual zones to which application windows can snap into (see e.g. Microsoft PowerToys FancyZones). The virtual zones provide a similar abstraction to the [=window segments=].
+</div>
+
+### Traditional single-screen device
+
+<div class="issue">
+  <dfn>Traditional single-screen device</dfn> to be defined.
+</div>
+
+### Monitor
+
+A <dfn>monitor</dfn> is an output device that displays information in pictorial form. A monitor usually comprises the display, circuitry, casing, and power supply. ([Wikipedia](https://en.wikipedia.org/wiki/Computer_monitor))
+
+### Display
+
+A <dfn>display</dfn>, informally a [=screen=], is a display device for presentation of images, text, or video transmitted electronically, without producing a permanent record. Electronic visual displays include television sets, computer monitors, and digital signage. ([Wikipedia](https://en.wikipedia.org/wiki/Electronic_visual_display))
+
+### Screen
+
+<dfn>Screen</dfn> is a synonym to [=display=]. [=Screen=] is used more in software context (logical) while display is primarily used in hardware context (physical). See also the [=Screen interface=].
+
+### Overall visual workspace
+
+<div class="issue">
+We need a term for the <dfn>overall visual workspace</dfn> of the device, whatever we choose to call the composition of multiple physical displays/screens.
+</div>
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Multi-monitor) says "Multi-monitor, also called multi-display and multi-head, is the use of multiple physical display devices, such as monitors, televisions, and projectors, in order to increase the area available for computer programs running on a single computer system."
+- [CSSOM View](https://drafts.csswg.org/cssom-view/#web-exposed-screen-information)'s "web-exposed-screen-information" only uses singular output device terminology
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen) says "The Screen interface represents a screen, usually the one on which the current window is being rendered... browsers determine which screen to report as current by detecting which screen has the center of the browser window."
+- [MSDN](https://docs.microsoft.com/en-us/windows/win32/gdi/the-virtual-screen) says "The bounding rectangle of all the monitors is the virtual screen."
+- [Apple](https://support.apple.com/en-us/HT202351) says "Maximize your workspace with extended desktop mode, which lets you enjoy full-screen apps and windows on each monitor"
+- [Ubuntu](https://help.ubuntu.com/stable/ubuntu-help/display-dual-monitors.html.en) says "With two screens, these display modes are available: Join Displays: screen edges are joined so things can pass from one display to another..."
+- [Arch Linux](https://wiki.archlinux.org/index.php/Multihead) says "Display refers to a collection of screens" and more...
+- [Chromebook Help](https://support.google.com/chromebook/answer/1060909?hl=en) says "You can connect your Chromebook to a monitor or TV"
+- Android mentions "[Multi-Display](https://source.android.com/devices/tech/display/multi_display)" and "[multi-screen](https://source.android.com/devices/tech/display/multi_display/recommended-practices#foldable)"
+- [iOS/UIKit](https://developer.apple.com/documentation/uikit/windows_and_screens/displaying_content_on_a_connected_screen) says "The user can connect additional screens"
+- [Chromium code](https://source.chromium.org/chromium/chromium/src/+/master:ui/display/screen.h;l=36) says "A single Screen object exists regardless of the number of connected displays."
+
+### Multiple internal display
+
+A <dfn>multiple internal display</dfn> (MID) device is a more technical synonym to a [=dual-screen device=].
+
+### Single foldable display
+
+A <dfn>single foldable display</dfn> (SFD) refers to a [=foldable-screen device=] with a single screen.
+
+### Posture
+
+A <dfn>posture</dfn> is defined as the primary way in which the [=foldable device=] is positioned and presented to the user. Because [=foldable devices=] have a hinge they can present different [=postures=] depending on the hinge angle, device orientation, and the way on how the device is being held by the user. Example postures include 'book', 'flat', 'laptop', and 'tent'. The list of postures is expected to evolve over time, and not all foldable devices are able to support all possible postures.
+
+<div class="issue">
+We've discussed the need to rethink the names of the postures to make them as abstract as possible. The fact that 'laptop' is both an actual device and a 'posture' mode can be confusing and misleading. Can a laptop have another posture that's not laptop? Does a mobile device get into laptop posture? Similar case with tablet as a device type and posture.
+</div>
+
+### Window segments
+
+A <dfn>window segment</dfn> represents the regions (and their dimensions) of the window that reside on separate (adjacent) [=displays=].
+
+### Spanning
+
+<dfn>Spanning</dfn> is a window mode on a [=dual-screen device=], where a single application or web content window is spread across both [=screens=] of the device. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience.
+
+### Window interface
+
+The [=Window interface=] represents a window containing a DOM document, with its document property pointing to the DOM document. The Window interface hosts a number of globally available functions and namespaces, objects, and constructors associated with the concept of a user interface window. In tabbed browsing, each tab is represented by its own Window object.
+
+### Viewport
+
+<div class="issue">
+[Visual Viewport API](#visual-viewport-api) defines the two conceptual viewports, colloquially known as the [=visual viewport=] and [=layout viewport=]. This API may need changes to be compatible with the [related web specifications](#related-web-specifications).
+</div>
+
+### Fold
+
+<dfn>Fold</dfn> is used as both a verb and a noun in the context of this explainer. _To fold_ means to lay one [part of the] screen over another [part of the] screen. _A fold_ (aka a screen fold) as a noun refers to the flexible [=screen area=] of a [=foldable-screen device=] that bends, or the hinge area between the screens of a [=dual-screen device=].
+
+### CSS pixel
+
+A <dfn>CSS pixel</dfn> is denoted in CSS with the suffix px. It is a unit of length which roughly corresponds to the width or height of a single dot that can be comfortably seen by the human eye without strain ([MDN](https://developer.mozilla.org/en-US/docs/Glossary/CSS_pixel)).
+
+One CSS pixel doesn’t necessarily correspond to one physical screen pixel, since that would make everything very small on high resolution screens. Instead one such CSS pixel might correspond to for example 2x2 square of physical pixels - or even non-discrete values given a subpixel (red, green, and blue) layout.
+
+Many OS’s allow to change the scaling of all UI elements which often is reflected in the [device pixel ratio](https://drafts.csswg.org/cssom-view/#dom-window-devicepixelratio) that makes up one CSS pixel. A browser also often allows the user to apply a scale on top of the OS-provided scale on a per site basis. The layout is laid out considering the browser viewport in CSS pixels. For example, given a browser scale of 125%, a 800px wide viewport becomes a 640px wide viewport.
+
+### Layout zoom
+
+<div class="issue">
+<dfn>Layout zoom</dfn> to be defined.
+</div>
+
+### Content scaling
+
+Usually content is laid out given the size of the viewport in [=CSS pixels=], but that may not always be the case. Especially on mobile devices the user may select “Show desktop site” which will usually lay the content out mimicking common desktop browser window size (typically 980-1024px width), and then that content is scaled so that the width fits within the actual viewport.
+
+Typically you can control this scaling via the viewport meta tag and browsers often also allow the user to manually change the content scale, by so-called pinch zoom gestures.
+
+### Window manager
+
+<div class="issue">
+<dfn>Window manager</dfn> to be defined. In particular, articulate the constraints imposed by various window managers (Android, split-screen, desktop/tablet modes, Windows 10X etc.)
+</div>
+
+### Content area bounds
+
+<div class="issue">
+<dfn>Content area bounds</dfn> to be defined.
+</div>
+
+## What are we trying to solve?
+
+For [=foldable devices=]:
+- Let developers design around the hinge for [=dual-screen devices=] when in [=spanning=] mode
+- React to [=posture=] changes to allow the possibility to re-layout accordingly
+- Access the hinge size, type and angle
+
+For [=multi-monitor setups=], let web applications:
+- Request information about all screens in the [=overall visual workspace=]
+- Request fullscreen on any screen in the [=overall visual workspace=]
+- Request placement of non-fullscreen windows on any screen in the [=overall visual workspace=]
+
+## API overview
+
+Web platform developers would like to enhance their sites and applications for new ‘foldable’ device form factors, as well as more traditional multi-screen desktop environments.
+
+For [=foldable devices=]:
+- [The ‘spanning’ CSS media feature and device fold CSS environment variables](#the-spanning-css-media-feature-and-device-fold-css-environment-variables)
+   - Provides the type and dimensions of a screen fold, when the document’s viewport spans a screen fold.
+- [Window Segments Enumeration API](#window-segments-enumeration-api)
+   - Provides dimensions of content regions, yielding separate rectangles when the document’s viewport spans a screen fold.
+- [Screen Fold API](#screen-fold-api)
+   - Provides the overall device posture and fold angle when the document’s viewport spans a screen fold.
+
+For [=multi-monitor setups=]:
+- [Multi-Screen Window Placement API](#multi-screen-window-placement-api)
+   - Provides information about all connected Screens
+   - Allows sites to request fullscreen or place windows on any connected Screen
+
+## Goals
+
+There are two main developer scenarios explored by these proposals:
+1. Optimizing site layout when a document’s viewport spans a screen fold.
+1. Managing the placement of document windows in a multi-screen environment.
+
+One can imagine combined scenarios, such as:
+1. Placing windows adjacent to or spanning a screen fold.
+1. Determining in advance whether a window placement request will cause the window to span a screen fold.
+
+## Non-goals
+
+Certain operating systems and [=window managers=] do not support window bounds requests from applications, e.g. Android (non-freeform window modes), Windows 10 tablet mode, Chrome OS Tablet Mode, Windows 10X, etc. It’s an explicit non-goal to support window bounds changes in these circumstances.
+
+[The ‘spanning’ CSS media feature and device fold CSS environment variables](#the-spanning-css-media-feature-and-device-fold-css-environment-variables) proposal is not currently meant to solve the problem for [=foldable devices=] with more than two [=screens=], due to the unavailability of a CSS construct that allows authors to iterate over a set of values. In this case, an author would need a function that allows them to retrieve the browser's predefined env() variables of the n-th fold/hinge.
+
+## Open questions
+
+- Support for [Multi-Screen Window Placement API](#multi-screen-window-placement-api) on [=dual-screen devices=] or [=foldable-screen devices=]? ([webscreens/window-placement#44](https://github.com/webscreens/window-placement/issues/44))
+
+- Could a single [=Screen interface=] object yield multiple [=window segments=] in a window? ([webscreens/window-segments#7](https://github.com/webscreens/window-segments/issues/7))
+
+- Support for single/multi-Screen [=folds=], off-center folds, and multiple folds in a single [=Screen=] ([w3c/screen-fold#38](https://github.com/w3c/screen-fold/issues/38))
+
+- Figure out how Virtual Keyboard API should interact with layout adjustments for [=foldable devices=] ([Explainer](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/VirtualKeyboardPolicy/explainer.md), see also [design-reviews/issues/498](https://github.com/w3ctag/design-reviews/issues/498), [design-reviews/issues/507](https://github.com/w3ctag/design-reviews/issues/507))
+
+## Related issues
+
+- https://github.com/webscreens/window-segments/issues
+- https://github.com/webscreens/window-placement/issues
+- https://github.com/w3c/screen-fold/issues/
+- https://github.com/w3c/csswg-drafts/issues/5621
+
+
+## Related web specifications
+
+The specifications enumerated in this section have been identified to be relevant in the context of new device form factors.
+
+<p class="issue">
+De-duplicate and standardize these terms across the related specs and syntaxes.
+</p>
+
+### Web APIs
+
+#### Window Segments Enumeration API
+
+- References:
+  [GitHub](https://github.com/webscreens/window-segments),
+  [Explainer](https://github.com/webscreens/window-segments/blob/master/EXPLAINER.md)
+- Terms defined by this specification:
+  - <dfn>window segment</dfn>
+  - <dfn>display</dfn>
+  - <dfn>screen</dfn>
+
+#### Multi-Screen Window Placement API
+
+- References:
+  [GitHub](https://github.com/webscreens/window-placement),
+  [Explainer](https://github.com/webscreens/window-placement/blob/master/EXPLAINER.md),
+  [Draft Community Group Report](https://webscreens.github.io/window-placement/)
+- Terms defined by this specification:
+  - [<dfn>screen pixel</dfn>](https://webscreens.github.io/window-placement/#screen-pixel)
+  - [<dfn>color depth</dfn>](https://webscreens.github.io/window-placement/#color-depth)
+  - [<dfn>screen area</dfn>](https://webscreens.github.io/window-placement/#screen-area)
+  - [<dfn>connected screen</dfn>](https://webscreens.github.io/window-placement/#connected-screens)
+  - [<dfn>available screen area</dfn>](https://webscreens.github.io/window-placement/#available-screen-area)
+  - <dfn>system screen area</dfn>
+  - [<dfn>internal screen</dfn>](https://webscreens.github.io/window-placement/#internal)
+  - [<dfn>external screen</dfn>](https://webscreens.github.io/window-placement/#external)
+  - [<dfn>primary screen</dfn>](https://webscreens.github.io/window-placement/#primary)
+  - [<dfn>touch support</dfn>](https://webscreens.github.io/window-placement/#touch-support)
+
+#### Screen Fold API
+
+- References:
+  [GitHub](https://github.com/w3c/screen-fold/),
+  [Explainer](https://github.com/SamsungInternet/Explainers/blob/master/Foldables/FoldState.md),
+  [Unofficial Draft](https://w3c.github.io/screen-fold/)
+- Terms defined by this specification:
+  - [<dfn>current screen fold angle</dfn>](https://w3c.github.io/screen-fold/#dfn-current-screen-fold-angle)
+  - [<dfn>current posture</dfn>](https://w3c.github.io/screen-fold/#dfn-current-posture)
+  - <dfn>posture</dfn>
+
+
+#### Visual Viewport API
+
+- References:
+  [GitHub](https://github.com/WICG/visual-viewport/),
+  Explainer,
+  [Draft Community Group Report](https://wicg.github.io/visual-viewport/)
+- Terms defined by this specification:
+  - <dfn>layout viewport</dfn>
+  - <dfn>visual viewport</dfn>
+
+#### HTML
+
+- References:
+  [GitHub](https://github.com/whatwg/html/),
+  Explainer,
+  [Living Standard](https://html.spec.whatwg.org/multipage/window-object.html#window)
+- Terms defined by this specification:
+  - [<dfn>Window interface</dfn>](https://html.spec.whatwg.org/multipage/window-object.html#window)  
+
+### CSS
+
+#### Media Queries
+
+- References:
+  [GitHub](https://github.com/w3c/csswg-drafts/blob/master/mediaqueries-5/Overview.bs),
+  Explainer,
+  [Editor's Draft](https://drafts.csswg.org/mediaqueries-5/)
+- Terms defined by this specification:
+  - [<dfn>‘screen’ media type</dfn>](https://drafts.csswg.org/mediaqueries-5/#valdef-media-screen)
+
+#### CSS Environment Variables
+
+- References:
+  [GitHub](https://github.com/w3c/csswg-drafts/blob/master/css-env-1/Overview.bs),
+  Explainer,
+  [Editor's Draft](https://drafts.csswg.org/css-env-1/)
+- Terms defined by this specification:
+  - [<dfn>'env()' function</dfn>](https://drafts.csswg.org/css-env-1/#funcdef-env)
+  
+#### The 'spanning' CSS media feature and device fold CSS environment variables
+- References:
+  GitHub,
+  [Explainer](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/Foldables/explainer.md),
+  Spec
+- Terms defined by this specification:
+  - <dfn>‘spanning’ CSS media feature</dfn>
+  - <dfn>‘screen-spanning’ feature policy</dfn>
+  - <dfn>fold-top</dfn> | <dfn>fold-right</dfn> | <dfn>fold-bottom</dfn> | <dfn>fold-left</dfn> | <dfn>fold-width</dfn> | <dfn>fold-height</dfn> <dfn>device fold CSS environment variables</dfn>
+
+#### CSS Device Adaptation
+
+- References:
+  [GitHub](https://github.com/w3c/csswg-drafts/blob/master/css-device-adapt-1/Overview.bs),
+  Explainer,
+  [Editor's Draft](https://drafts.csswg.org/css-device-adapt-1/)
+- Note: Abandoned(?), possibly reuse parts in other spec efforts mentioned in this explainer
+- Terms defined by this specification:
+
+#### CSSOM View Module
+
+- References:
+  [GitHub](https://github.com/w3c/csswg-drafts/blob/master/cssom-view-1/Overview.bs),
+  Explainer,
+  [Editor's Draft](https://drafts.csswg.org/cssom-view/#the-screen-interface)
+- Terms defined by this specification:
+  - [<dfn>Screen interface</dfn>](https://drafts.csswg.org/cssom-view/#the-screen-interface)
+
+<section id="index" class="appendix">
+<div class="issue">
+[Terms defined by this specification](#a-1-terms-defined-by-this-specification) are actually a composite of the terms defined by this specification and those defined by specifications enumerated in the [related web specifications](#related-web-specifications). This is a tooling limitation.
+</div>
+</section>
+
+<section class="appendix">
+## Acknowledgements
+
+The [Second Screen Community Group](https://www.w3.org/community/webscreens/) is grateful for contributions that have helped shape this document that attempts to build a shared understanding of this exciting space. Special thanks to
+Zouhir Chahoud,
+Kenneth Rohde Christiansen,
+Victor Costan,
+François Daoust,
+Diego González,
+Anssi Kostiainen,
+Daniel Libby,
+Arnaud Mandy,
+Alexis Menard,
+Laura Morinigo,
+Mike Wasserman,
+and many others for their contributions!
+
+</section>
+</body>
+</html>
