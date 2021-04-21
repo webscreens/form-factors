@@ -79,7 +79,7 @@ A <dfn data-export="">multi-monitor setup</dfn> (sometimes referred to as an <df
 Major desktop operating systems allow users to customize the logical arrangement of multiple screens, including their relative arrangement and other attributes. The arrangement may or may not reflect the placement and dimensions of underlying physical hardware. In this configuration, it is typical to mix and match monitors of different physical sizes and resolutions, in both landscape and portrait configurations, to optimize the screen space for the usage model. This free-form composition of screens is distinct from the nature of [=dual-screen devices=], which have well-defined relationships between physical displays, and from [=foldable-screen devices=], which expands the operational modes of a single physical display.
 
 <div class="note">
-Power users may also make use of advanced software tools to create virtual zones to which application windows can snap into (see e.g. Microsoft PowerToys FancyZones). The virtual zones provide a similar abstraction to the [=window segments=].
+Power users may also make use of advanced software tools to create virtual zones to which application windows can snap into (see e.g. Microsoft PowerToys FancyZones). The virtual zones provide a similar abstraction to the [=viewport segments=], but apply at the system level, whereas [=viewport segments=] are related to content within an application, and their relation to the virtual zones.
 </div>
 
 ### Traditional single-screen device
@@ -134,13 +134,13 @@ A <dfn>posture</dfn> is defined as the primary way in which the [=foldable devic
 We've discussed the need to rethink the names of the postures to make them as abstract as possible. The fact that 'laptop' is both an actual device and a 'posture' mode can be confusing and misleading. Can a laptop have another posture that's not laptop? Does a mobile device get into laptop posture? Similar case with tablet as a device type and posture.
 </div>
 
-### Window segments
+### Viewport segments
 
-A <dfn>window segment</dfn> represents the regions (and their dimensions) of the window that reside on separate (adjacent) [=displays=].
+A <dfn>viewport segment</dfn> represents the regions (and their dimensions) of the visual viewport that reside on separate (adjacent) [=displays=] or logical display regions. These convey a specific semantic meaning from the [=window manager=], which has placed the window in a state where it is appropriate for an application to treat the segments as logically separate regions. As a counter-example, when a desktop operating system window straddles the logical space between external monitors, the [=window manager=] does not provide this signal.
 
 ### Spanning
 
-<dfn>Spanning</dfn> is a window mode on a [=dual-screen device=], where a single application or web content window is spread across both [=screens=] of the device. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience.
+<dfn>Spanning</dfn> is a window mode on a [=dual-screen device=], where a single application or web content window is spread across both [=screens=] of the device. The ability to maximize a given application across the two [=screens=] is enabled through the [=window manager=]. Because spanning across the two screens double the screen estate while also having two logically separate regions, it is expected that applications and websites leverage that additional space to optimize or enhance the UX to provide a better experience. When a window is in [=spanning=] mode, it correspondingly has multiple [=viewport segments=].
 
 ### Window interface
 
@@ -148,8 +148,7 @@ The [=Window interface=] represents a window containing a DOM document, with its
 
 ### Viewport
 
-<div class="issue">
-[Visual Viewport API](#visual-viewport-api) defines the two conceptual viewports, colloquially known as the [=visual viewport=] and [=layout viewport=]. This API may need changes to be compatible with the [related web specifications](#related-web-specifications).
+The [Visual Viewport API](#visual-viewport-api) defines the two conceptual viewports, colloquially known as the [=visual viewport=] and [=layout viewport=]. This API may need changes to be compatible with the [related web specifications](#related-web-specifications).
 </div>
 
 ### Fold
@@ -237,7 +236,7 @@ Certain operating systems and [=window managers=] do not support window bounds r
 
 - Support for [Multi-Screen Window Placement API](#multi-screen-window-placement-api) on [=dual-screen devices=] or [=foldable-screen devices=]? ([webscreens/window-placement#44](https://github.com/webscreens/window-placement/issues/44))
 
-- Could a single [=Screen interface=] object yield multiple [=window segments=] in a window? ([webscreens/window-segments#7](https://github.com/webscreens/window-segments/issues/7))
+- Could a single [=Screen interface=] object yield multiple screen segments in a window? ([webscreens/window-segments#7](https://github.com/webscreens/window-segments/issues/7))
 
 - Support for single/multi-Screen [=folds=], off-center folds, and multiple folds in a single [=Screen=] ([w3c/screen-fold#38](https://github.com/w3c/screen-fold/issues/38))
 
@@ -263,11 +262,14 @@ De-duplicate and standardize these terms across the related specs and syntaxes.
 
 #### Window Segments Enumeration API
 
+<div class="issue">
+This API is in the process of being renamed to reflect the [=viewport segments=] concept and moving to the [Visual Viewport API](#visual-viewport-api).
+</div>
 - References:
   [GitHub](https://github.com/webscreens/window-segments),
   [Explainer](https://github.com/webscreens/window-segments/blob/master/EXPLAINER.md)
 - Terms defined by this specification:
-  - <dfn>window segment</dfn>
+  - <dfn>viewport segment</dfn>
   - <dfn>display</dfn>
   - <dfn>screen</dfn>
 
